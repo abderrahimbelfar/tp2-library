@@ -86,4 +86,16 @@ public class Library {
         openLoan.setReturnDate(today);
         copy.setAvailable(true);
     }
+    public List<Book> searchByTitle(String keyword) {
+        List<Book> result = new ArrayList<>();
+
+        for (Book book : books.values()) {
+            if (book.getTitle().toLowerCase()
+                    .contains(keyword.toLowerCase())) {
+                result.add(book);
+            }
+        }
+
+        return result;
+    }
 }
