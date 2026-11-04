@@ -1,1 +1,1 @@
-# Library management – TP 2 – Main version
+# Library management – TP 2 (with search)

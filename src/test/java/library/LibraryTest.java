@@ -74,4 +74,13 @@ class LibraryTest {
         assertThrows(IllegalStateException.class,
                 () -> library.lend("M-01", "C-006", DAY));
     }
+    @Test
+    void searchFindsBooksIgnoringCase() {
+        library.addBook(new Book(
+                "978-0-00-000002-2",
+                "Introduction to Java",
+                2020));
+
+        assertEquals(1, library.searchByTitle("JAVA").size());
+    }
 }
