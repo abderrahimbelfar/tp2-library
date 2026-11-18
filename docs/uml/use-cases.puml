@@ -14,7 +14,7 @@ rectangle "Library system" {
     usecase "Search the catalog" as Search
     usecase "Reserve a book" as Reserve
     usecase "Renew a loan" as Renew
-    usecase "Register a loan" as Loan
+    usecase "Lend copies" as Loan
 
     usecase Return as "Register a return
     --
