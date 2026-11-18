@@ -1,0 +1,42 @@
+@startuml
+
+|Librarian|
+start
+:Enter member information;
+
+|System|
+:Check borrowing rights;
+
+if (Rights accepted?) then (yes)
+
+  repeat
+    |Librarian|
+    :Present a copy;
+
+    |System|
+    :Check copy availability;
+
+    if (Copy available?) then (yes)
+      if (Reserved for another member?) then (yes)
+        :Exception 5a - Copy reserved;
+      else (no)
+        :Register the loan;
+      endif
+    else (no)
+      :Copy unavailable;
+    endif
+
+  repeat while (Another copy?) is (yes)
+
+  |Librarian|
+  :Finish the loan process;
+
+else (no)
+  :Exception 3a - Rights refused;
+  |Librarian|
+  :Inform the member;
+endif
+
+stop
+
+@enduml

@@ -1,0 +1,38 @@
+@startuml
+
+|Member|
+start
+:Return the borrowed copy;
+
+|Librarian|
+:Receive the copy;
+:Identify the loan;
+
+|System|
+:Retrieve loan information;
+:Check if the return is late;
+
+if (Return late?) then (yes)
+  :Activate extension point\n"late return";
+  :Suspend the member;
+else (no)
+endif
+
+:Close the loan;
+:Check if the copy is reserved;
+
+if (Copy reserved?) then (yes)
+  |Librarian|
+  :Set the copy aside;
+
+  |System|
+  :Notify the member who reserved it;
+else (no)
+  :Make the copy available;
+endif
+
+|Librarian|
+:Complete the return process;
+
+stop
+@enduml
