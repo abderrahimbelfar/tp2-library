@@ -31,6 +31,9 @@ if (Rights accepted?) then (yes)
   |Librarian|
   :Finish the loan process;
 
+  |System|
+  :Print the receipt;
+
 else (no)
   :Exception 3a - Rights refused;
   |Librarian|

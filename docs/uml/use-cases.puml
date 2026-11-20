@@ -14,12 +14,9 @@ rectangle "Library system" {
     usecase "Search the catalog" as Search
     usecase "Reserve a book" as Reserve
     usecase "Renew a loan" as Renew
-    usecase "Lend copies" as Loan
+    usecase "Register a loan" as Loan
 
-    usecase Return as "Register a return
-    --
-    extension points
-    late return"
+    usecase "Register a return" as return
 
     usecase "Manage the catalog" as Manage
     usecase "Check borrowing rights" as Check
@@ -35,8 +32,6 @@ User -- Search
 Member -- Reserve
 Member -- Renew
 
-Librarian -- Reserve
-Librarian -- Renew
 Librarian -- Loan
 Librarian -- Return
 Librarian -- Manage

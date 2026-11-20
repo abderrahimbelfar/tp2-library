@@ -10,29 +10,38 @@ start
 
 |System|
 :Retrieve loan information;
-:Check if the return is late;
 
-if (Return late?) then (yes)
-  :Activate extension point\n"late return";
-  :Suspend the member;
-else (no)
-endif
+if (Copy on loan?) then (yes)
 
-:Close the loan;
-:Check if the copy is reserved;
+  :Close the loan;
+  :Check if the return is late;
 
-if (Copy reserved?) then (yes)
+  if (Return late?) then (yes)
+    :Activate extension point\n"late return";
+    :Suspend the member;
+  else (no)
+  endif
+
+  :Check if the copy is reserved;
+
+  if (Copy reserved?) then (yes)
+    |Librarian|
+    :Set the copy aside;
+
+    |System|
+    :Notify the member who reserved it;
+  else (no)
+    :Make the copy available;
+  endif
+
+  :Print the receipt;
+
   |Librarian|
-  :Set the copy aside;
+  :Complete the return process;
 
-  |System|
-  :Notify the member who reserved it;
 else (no)
-  :Make the copy available;
+  :Display an error message;
 endif
-
-|Librarian|
-:Complete the return process;
 
 stop
 @enduml
